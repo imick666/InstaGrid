@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet var layoutSelectorList: [LayoutSelector]!
     
@@ -18,25 +18,34 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var swipeToShareStackView: UIStackView!
     
-    let swipeGesture = UISwipeGestureRecognizer()
+    
     let currentDevice = UIDevice.current
     
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutSelectorList[0].currentState = .selected
         //orientation Notification
-        currentDevice.beginGeneratingDeviceOrientationNotifications()
         let orientationNotification = UIDevice.orientationDidChangeNotification
+        currentDevice.beginGeneratingDeviceOrientationNotifications()
         NotificationCenter.default.addObserver(self, selector: #selector(orientationNotif), name: orientationNotification, object: nil)
+        
     }
     
+    //what happend when orientation change
     @objc private func orientationNotif() {
-        if currentDevice.orientation.isLandscape {
-            swipeGesture.direction = .left
-        } else {
-            swipeGesture.direction = .up
+        //update selector's animation
+        for selector in layoutSelectorList where selector.currentState == .selected {
+            selector.setState()
         }
-        swipeGesture.addTarget(resultView!, action: #selector(shareAnimation(_:)))
+        
+    }
+    
+    @objc func swipeUp(_ gesture: UISwipeGestureRecognizer) {
+        print("UP")
+    }
+    
+    @objc func swipeLeft(_ gesture: UISwipeGestureRecognizer) {
+        print("Left")
     }
     
     @objc private func shareAnimation(_ gesture: UISwipeGestureRecognizer) {
