@@ -18,14 +18,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var swipeToShareStackView: UIStackView!
     
+    let swipeGesture = UISwipeGestureRecognizer()
+    let currentDevice = UIDevice.current
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutSelectorList[0].currentState = .selected
-        
-        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(shareAnimation(_:)))
-        swipeGesture.direction = .up
-        resultView.addGestureRecognizer(swipeGesture)
-        
+        //orientation Notification
+        currentDevice.beginGeneratingDeviceOrientationNotifications()
+        let orientationNotification = UIDevice.orientationDidChangeNotification
+        NotificationCenter.default.addObserver(self, selector: #selector(orientationNotif), name: orientationNotification, object: nil)
+    }
+    
+    @objc private func orientationNotif() {
+        if currentDevice.orientation.isLandscape {
+            swipeGesture.direction = .left
+        } else {
+            swipeGesture.direction = .up
+        }
+        swipeGesture.addTarget(resultView!, action: #selector(shareAnimation(_:)))
     }
     
     @objc private func shareAnimation(_ gesture: UISwipeGestureRecognizer) {
@@ -33,6 +44,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let image = resultImgeRenderer()
         shareImageAVC(object: image)
     }
+    
     //animation before share
     private func animationOut() {
         UIView.animate(withDuration: 0.5) {
