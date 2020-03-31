@@ -53,6 +53,17 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Delm-Medium.otf</string>
+		<string>ThirstySoftRegular.otf</string>
+	</array>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>We need to access your photo library</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need to access your photo library</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We need to access your camera</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
