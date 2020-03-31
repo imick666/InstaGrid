@@ -17,19 +17,25 @@ class ViewController: UIViewController {
     @IBOutlet var imageFour: SingleImageViewButton!
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var swipeToShareStackView: UIStackView!
-    
-    
-    let currentDevice = UIDevice.current
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutSelectorList[0].currentState = .selected
         //orientation Notification
-        let orientationNotification = UIDevice.orientationDidChangeNotification
-        currentDevice.beginGeneratingDeviceOrientationNotifications()
-        NotificationCenter.default.addObserver(self, selector: #selector(orientationNotif), name: orientationNotification, object: nil)
+        let orientationNotificationName = UIDevice.orientationDidChangeNotification
         
+        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
+        NotificationCenter.default.addObserver(self, selector: #selector(orientationNotif), name: orientationNotificationName, object: nil)
+        
+        let swipUpGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeOrientation(_:)))
+        swipUpGesture.direction = .up
+        resultView.addGestureRecognizer(swipUpGesture)
+       
+        let swipLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeOrientation(_:)))
+        swipLeftGesture.direction = .left
+        resultView.addGestureRecognizer(swipLeftGesture)
     }
+
     
     //what happend when orientation change
     @objc private func orientationNotif() {
@@ -40,31 +46,45 @@ class ViewController: UIViewController {
         
     }
     
-    @objc func swipeUp(_ gesture: UISwipeGestureRecognizer) {
-        print("UP")
+    @objc func swipeOrientation(_ gesture: UISwipeGestureRecognizer) {
+        if UIDevice.current.orientation.isPortrait && gesture.direction == .up {
+            print("Up")
+            animationOutUp()
+            shareAnimation()
+        } else if UIDevice.current.orientation.isLandscape && gesture.direction == .left {
+            print("Left")
+            animationOutLeft()
+            shareAnimation()
+        }
     }
     
-    @objc func swipeLeft(_ gesture: UISwipeGestureRecognizer) {
-        print("Left")
-    }
-    
-    @objc private func shareAnimation(_ gesture: UISwipeGestureRecognizer) {
-        animationOut()
+    private func shareAnimation() {
+//        animationOut()
         let image = resultImgeRenderer()
         shareImageAVC(object: image)
     }
     
     //animation before share
-    private func animationOut() {
+    private func animationOutUp() {
+        let screenSize = UIScreen.main.bounds
         UIView.animate(withDuration: 0.5) {
-            let screenSize = UIScreen.main.bounds
             let scaleReduction = CGAffineTransform(scaleX: 0.49, y: 0.49)
             let translate = CGAffineTransform(translationX: 0, y: -screenSize.height / 2.13)
             let totalTransform = translate.concatenating(scaleReduction)
             self.resultView.transform = totalTransform
             self.swipeToShareStackView.alpha = 0
         }
-        
+    }
+    
+    private func animationOutLeft() {
+        let screenSize = UIScreen.main.bounds
+        let scaleReduction = CGAffineTransform(scaleX: 0.49, y: 0.49)
+        let translate = CGAffineTransform(translationX: -screenSize.width - 200, y: 0)
+        let totalTransform = translate.concatenating(scaleReduction)
+        UIView.animate(withDuration: 0.5) {
+            self.resultView.transform = totalTransform
+            self.swipeToShareStackView.alpha = 0
+        }
     }
     //animtation after share
     private func animationIn() {
