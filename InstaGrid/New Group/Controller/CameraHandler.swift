@@ -14,34 +14,6 @@ class CameraHandler:UIViewController, UIImagePickerControllerDelegate, UINavigat
     fileprivate var currentVC: UIViewController!
     var imagePickedBlock: ((UIImage) -> Void)?
     
-    func camera() {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            let ipc = UIImagePickerController()
-            ipc.delegate = self
-            ipc.sourceType = .camera
-            ipc.allowsEditing = true
-            currentVC.present(ipc, animated: true, completion: nil)
-        } else {
-            let alert = UIAlertController(title: "WARNING", message: "Camera is not availible", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            currentVC.present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    func photoLibrary() {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            let ipc = UIImagePickerController()
-            ipc.delegate = self
-            ipc.sourceType = .photoLibrary
-            ipc.allowsEditing = true
-            currentVC.present(ipc, animated: true, completion: nil)
-        } else {
-            let alert = UIAlertController(title: "WARNING", message: "Photo library is not availible", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            currentVC.present(alert, animated: true, completion: nil)
-        }
-    }
-    
     func showActionSheet(_ currentViewController: UIViewController) {
         currentVC = currentViewController
         
@@ -60,6 +32,36 @@ class CameraHandler:UIViewController, UIImagePickerControllerDelegate, UINavigat
         currentViewController.present(actionSheet, animated: true, completion: nil)
     }
     
+    private func camera() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let ipc = UIImagePickerController()
+            ipc.delegate = self
+            ipc.sourceType = .camera
+            ipc.allowsEditing = true
+            currentVC.present(ipc, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "WARNING", message: "Camera is not availible", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            currentVC.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    private func photoLibrary() {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let ipc = UIImagePickerController()
+            ipc.delegate = self
+            ipc.sourceType = .photoLibrary
+            ipc.allowsEditing = true
+            currentVC.present(ipc, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "WARNING", message: "Photo library is not availible", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            currentVC.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         currentVC.dismiss(animated: true, completion: nil)
     }
@@ -72,5 +74,4 @@ class CameraHandler:UIViewController, UIImagePickerControllerDelegate, UINavigat
         }
         currentVC.dismiss(animated: true, completion: nil)
     }
-
 }

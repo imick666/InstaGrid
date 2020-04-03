@@ -10,25 +10,21 @@ import UIKit
 
 class LayoutSelector: UIButton {
     
-    enum State {
-        case selected, unselected
-    }
-    
     static let shared = LayoutSelector()
     
     
-    var currentState: State = .unselected {
+    var isSelect: Bool = false {
         didSet {
            setState()
         }
     }
     
     func setState() {
-        switch currentState {
-        case .selected:
+        switch isSelect {
+        case true:
             self.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
             animateSelector()
-        case .unselected:
+        case false:
             self.setImage(nil, for: .normal)
             self.transform = .identity
         
@@ -36,9 +32,7 @@ class LayoutSelector: UIButton {
     }
     
     private func animateSelector() {
-        if !UIDevice.current.orientation.isValidInterfaceOrientation {
-            return
-        }
+        guard UIDevice.current.orientation.isValidInterfaceOrientation else { return }
         if UIDevice.current.orientation.isLandscape {
             let scale = CGAffineTransform(scaleX: 1.1, y: 1.1)
             let transformTotal = CGAffineTransform(translationX: -15, y: 0).concatenating(scale)

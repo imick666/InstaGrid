@@ -17,10 +17,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var swipeToShareStackView: UIStackView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        layoutSelectorList[0].currentState = .selected
+        layoutSelectorList[0].isSelect = true
         //orientation Notification
         let orientationNotificationName = UIDevice.orientationDidChangeNotification
 
@@ -34,32 +33,34 @@ class ViewController: UIViewController {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeOrientation(_:)))
         swipeLeft.direction = .left
         resultView.addGestureRecognizer(swipeLeft)
-        
     }
     //-----------------------------------
-    // MARK: - SELECTORS
+    // MARK: - OBJ-C SELECTORS
     //-----------------------------------
     //what happend when orientation change
     @objc private func orientationNotif() {
         //update selector's animation
-        for selector in layoutSelectorList where selector.currentState == .selected {
+        for selector in layoutSelectorList where selector.isSelect {
             selector.setState()
         }
-        
     }
     
-    @objc func swipeOrientation(_ gesture: UISwipeGestureRecognizer) { 
-        if !UIDevice.current.orientation.isValidInterfaceOrientation {
-            return
-        }
-        if UIDevice.current.orientation.isPortrait && gesture.direction == .up {
-            print("Up")
-            animationOutUp()
-            shareResultImage()
-        } else if UIDevice.current.orientation.isLandscape && gesture.direction == .left {
-            print("Left")
-            animationOutLeft()
-            shareResultImage()
+    @objc func swipeOrientation(_ gesture: UISwipeGestureRecognizer) {
+        switch gesture.direction {
+        case  .up:
+            if UIDevice.current.orientation.isPortrait {
+                print("Up")
+                animationOutUp()
+                shareResultImage()
+            }
+        case .left:
+            if UIDevice.current.orientation.isLandscape {
+                print("Left")
+                animationOutLeft()
+                shareResultImage()
+            }
+        default:
+            break
         }
     }
     
@@ -139,7 +140,7 @@ class ViewController: UIViewController {
     //Setup layout implentation
     func setLayoutSelected() {
         for layout in layoutSelectorList {
-            layout.currentState = .unselected
+            layout.isSelect = false
         }
         imageOne.resetImage()
         imageTwo.resetImage()
@@ -157,7 +158,7 @@ class ViewController: UIViewController {
     
     @IBAction func LayoutOnePressed(_ sender: LayoutSelector) {
         setLayoutSelected()
-        sender.currentState = .selected
+        sender.isSelect = true
         imageOne.isHidden = false
         imageTwo.isHidden = true
         imageThree.isHidden = false
@@ -166,7 +167,7 @@ class ViewController: UIViewController {
     
     @IBAction func layoutTowPressed(_ sender: LayoutSelector) {
         setLayoutSelected()
-        sender.currentState = .selected
+        sender.isSelect = true
         imageOne.isHidden = false
         imageTwo.isHidden = false
         imageThree.isHidden = false
@@ -175,7 +176,7 @@ class ViewController: UIViewController {
     
     @IBAction func layoutThreePressed(_ sender: LayoutSelector) {
         setLayoutSelected()
-        sender.currentState = .selected
+        sender.isSelect = true
         imageOne.isHidden = false
         imageTwo.isHidden = false
         imageThree.isHidden = false
