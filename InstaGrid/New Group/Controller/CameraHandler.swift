@@ -21,6 +21,10 @@ class CameraHandler:UIViewController, UIImagePickerControllerDelegate, UINavigat
             ipc.sourceType = .camera
             ipc.allowsEditing = true
             currentVC.present(ipc, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "WARNING", message: "Camera is not availible", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            currentVC.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -31,6 +35,10 @@ class CameraHandler:UIViewController, UIImagePickerControllerDelegate, UINavigat
             ipc.sourceType = .photoLibrary
             ipc.allowsEditing = true
             currentVC.present(ipc, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "WARNING", message: "Photo library is not availible", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            currentVC.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -60,7 +68,7 @@ class CameraHandler:UIViewController, UIImagePickerControllerDelegate, UINavigat
         if let image = info[.editedImage] as? UIImage {
             self.imagePickedBlock?(image)
         } else {
-            print("FUCK")
+            print("Hoho... There is a probleme")
         }
         currentVC.dismiss(animated: true, completion: nil)
     }

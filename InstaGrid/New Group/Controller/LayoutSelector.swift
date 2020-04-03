@@ -36,6 +36,9 @@ class LayoutSelector: UIButton {
     }
     
     private func animateSelector() {
+        if !UIDevice.current.orientation.isValidInterfaceOrientation {
+            return
+        }
         if UIDevice.current.orientation.isLandscape {
             let scale = CGAffineTransform(scaleX: 1.1, y: 1.1)
             let transformTotal = CGAffineTransform(translationX: -15, y: 0).concatenating(scale)

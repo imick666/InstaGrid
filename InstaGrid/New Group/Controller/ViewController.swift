@@ -10,33 +10,35 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet var layoutSelectorList: [LayoutSelector]!
-    
     @IBOutlet var imageOne: SingleImageViewButton!
     @IBOutlet var imageTwo: SingleImageViewButton!
     @IBOutlet var imageThree: SingleImageViewButton!
     @IBOutlet var imageFour: SingleImageViewButton!
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var swipeToShareStackView: UIStackView!
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutSelectorList[0].currentState = .selected
         //orientation Notification
         let orientationNotificationName = UIDevice.orientationDidChangeNotification
-        
+
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
         NotificationCenter.default.addObserver(self, selector: #selector(orientationNotif), name: orientationNotificationName, object: nil)
         
-        let swipUpGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeOrientation(_:)))
-        swipUpGesture.direction = .up
-        resultView.addGestureRecognizer(swipUpGesture)
-       
-        let swipLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeOrientation(_:)))
-        swipLeftGesture.direction = .left
-        resultView.addGestureRecognizer(swipLeftGesture)
-    }
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(swipeOrientation(_:)))
+        swipeUp.direction = .up
+        resultView.addGestureRecognizer(swipeUp)
 
-    
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeOrientation(_:)))
+        swipeLeft.direction = .left
+        resultView.addGestureRecognizer(swipeLeft)
+        
+    }
+    //-----------------------------------
+    // MARK: - SELECTORS
+    //-----------------------------------
     //what happend when orientation change
     @objc private func orientationNotif() {
         //update selector's animation
@@ -46,24 +48,46 @@ class ViewController: UIViewController {
         
     }
     
-    @objc func swipeOrientation(_ gesture: UISwipeGestureRecognizer) {
+    @objc func swipeOrientation(_ gesture: UISwipeGestureRecognizer) { 
+        if !UIDevice.current.orientation.isValidInterfaceOrientation {
+            return
+        }
         if UIDevice.current.orientation.isPortrait && gesture.direction == .up {
             print("Up")
             animationOutUp()
-            shareAnimation()
+            shareResultImage()
         } else if UIDevice.current.orientation.isLandscape && gesture.direction == .left {
             print("Left")
             animationOutLeft()
-            shareAnimation()
+            shareResultImage()
         }
     }
     
-    private func shareAnimation() {
-//        animationOut()
-        let image = resultImgeRenderer()
-        shareImageAVC(object: image)
+    //-----------------------------------
+    // MARK: - IMAGE RENDERER || SHARE
+    //-----------------------------------
+    //render result Image
+    private func resultImgeRenderer() -> UIImage{
+        let renderer = UIGraphicsImageRenderer(size: resultView.bounds.size)
+        let resultImage = renderer.image { (context) in
+            resultView.drawHierarchy(in: resultView.bounds, afterScreenUpdates: true)
+        }
+        return resultImage
     }
     
+    private func shareResultImage() {
+        let image = resultImgeRenderer()
+        ShareHandler.shared.showAC(self, object: image) {
+            if UIDevice.current.orientation.isPortrait {
+                self.animationInUp()
+            } else if UIDevice.current.orientation.isLandscape {
+                self.animationInLeft()
+            }
+        }
+    }
+    //-----------------------------------
+    // MARK: - ANIMATIONS
+    //-----------------------------------
     //animation before share
     private func animationOutUp() {
         let screenSize = UIScreen.main.bounds
@@ -87,7 +111,7 @@ class ViewController: UIViewController {
         }
     }
     //animtation after share
-    private func animationIn() {
+    private func animationInUp() {
         UIView.animate(withDuration: 0.5, animations: {
             self.resultView.transform = .identity
         }) { (true) in
@@ -97,27 +121,20 @@ class ViewController: UIViewController {
         }
     }
     
-    //share function
-    //[ShareSheet] connection invalidated?? kesako?
-    private func shareImageAVC(object: UIImage) {
-        let avc = UIActivityViewController(activityItems: [object], applicationActivities: [])
-        self.present(avc, animated: true, completion: nil)
-        
-        avc.completionWithItemsHandler = { (activitype, true, items, error) in
-            self.animationIn()
+    private func animationInLeft() {
+        resultView.transform = .identity
+        resultView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        UIView.animate(withDuration: 0.5, animations: {
+            self.resultView.transform = .identity
+        }) { (true) in
+            UIView.animate(withDuration: 0.3) {
+                self.swipeToShareStackView.alpha = 1
+            }
         }
     }
-    
-    
-    //render result Image
-    private func resultImgeRenderer() -> UIImage{
-        let renderer = UIGraphicsImageRenderer(size: resultView.bounds.size)
-        let resultImage = renderer.image { (context) in
-            resultView.drawHierarchy(in: resultView.bounds, afterScreenUpdates: true)
-        }
-        return resultImage
-    }
-
+    //-----------------------------------
+    // MARK: - ACTIONS
+    //-----------------------------------
     
     //Setup layout implentation
     func setLayoutSelected() {
@@ -137,7 +154,6 @@ class ViewController: UIViewController {
             sender.imageView?.contentMode = .scaleAspectFill
         }
     }
-    
     
     @IBAction func LayoutOnePressed(_ sender: LayoutSelector) {
         setLayoutSelected()

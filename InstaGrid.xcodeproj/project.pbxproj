@@ -18,6 +18,7 @@
 		E00A0CB12432508B005F56A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00A0C95243244C6005F56A0 /* ViewController.swift */; };
 		E00A0CB324325E4F005F56A0 /* SingleImageViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00A0CB224325E4F005F56A0 /* SingleImageViewButton.swift */; };
 		E042B89A24332A0B00EDCDE5 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E042B89924332A0B00EDCDE5 /* CameraHandler.swift */; };
+		E0C83A1A243733D200FAA314 /* ShareHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C83A19243733D200FAA314 /* ShareHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		E00A0CAF24324FF3005F56A0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E00A0CB224325E4F005F56A0 /* SingleImageViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewButton.swift; sourceTree = "<group>"; };
 		E042B89924332A0B00EDCDE5 /* CameraHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
+		E0C83A19243733D200FAA314 /* ShareHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				E00A0CAD24324EA7005F56A0 /* LayoutSelector.swift */,
 				E00A0CB224325E4F005F56A0 /* SingleImageViewButton.swift */,
 				E042B89924332A0B00EDCDE5 /* CameraHandler.swift */,
+				E0C83A19243733D200FAA314 /* ShareHandler.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			files = (
 				E00A0C92243244C6005F56A0 /* AppDelegate.swift in Sources */,
 				E00A0CAE24324EA7005F56A0 /* LayoutSelector.swift in Sources */,
+				E0C83A1A243733D200FAA314 /* ShareHandler.swift in Sources */,
 				E00A0CB12432508B005F56A0 /* ViewController.swift in Sources */,
 				E042B89A24332A0B00EDCDE5 /* CameraHandler.swift in Sources */,
 				E00A0C94243244C6005F56A0 /* SceneDelegate.swift in Sources */,
