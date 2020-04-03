@@ -17,25 +17,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var swipeToShareStackView: UIStackView!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutSelectorList[0].isSelect = true
         //orientation Notification
         let orientationNotificationName = UIDevice.orientationDidChangeNotification
-
         UIDevice.current.beginGeneratingDeviceOrientationNotifications()
         NotificationCenter.default.addObserver(self, selector: #selector(orientationNotif), name: orientationNotificationName, object: nil)
-        
-        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(swipeOrientation(_:)))
-        swipeUp.direction = .up
-        resultView.addGestureRecognizer(swipeUp)
-
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeOrientation(_:)))
-        swipeLeft.direction = .left
-        resultView.addGestureRecognizer(swipeLeft)
     }
+
+    //use willTransition()??
+    
     //-----------------------------------
-    // MARK: - OBJ-C SELECTORS
+    // MARK: - OBJ-C SELECTORS || UTILITIES
     //-----------------------------------
     //what happend when orientation change
     @objc private func orientationNotif() {
@@ -43,22 +39,31 @@ class ViewController: UIViewController {
         for selector in layoutSelectorList where selector.isSelect {
             selector.setState()
         }
+        createGesture()
+    }
+    
+    //Create Gesture Recognizer
+    private func createGesture() {
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeOrientation(_:)))
+        if UIDevice.current.orientation.isLandscape {
+            print("Left")
+            swipeGesture.direction = .left
+        } else if UIDevice.current.orientation.isPortrait {
+            print("Up")
+            swipeGesture.direction = .up
+        }
+        resultView.addGestureRecognizer(swipeGesture)
     }
     
     @objc func swipeOrientation(_ gesture: UISwipeGestureRecognizer) {
         switch gesture.direction {
         case  .up:
-            if UIDevice.current.orientation.isPortrait {
-                print("Up")
-                animationOutUp()
-                shareResultImage()
-            }
+            animationOutUp()
+            shareResultImage()
+
         case .left:
-            if UIDevice.current.orientation.isLandscape {
-                print("Left")
-                animationOutLeft()
-                shareResultImage()
-            }
+            animationOutLeft()
+            shareResultImage()
         default:
             break
         }
@@ -70,7 +75,7 @@ class ViewController: UIViewController {
     //render result Image
     private func resultImgeRenderer() -> UIImage{
         let renderer = UIGraphicsImageRenderer(size: resultView.bounds.size)
-        let resultImage = renderer.image { (context) in
+        let resultImage = renderer.image { (context) in //contect?? kesako??
             resultView.drawHierarchy(in: resultView.bounds, afterScreenUpdates: true)
         }
         return resultImage

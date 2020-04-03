@@ -68,7 +68,9 @@
 		E00A0C90243244C6005F56A0 /* InstaGrid */ = {
 			isa = PBXGroup;
 			children = (
-				E00A0CA5243244DD005F56A0 /* New Group */,
+				E00A0CA8243244EE005F56A0 /* Controller */,
+				E00A0CA7243244E9005F56A0 /* View */,
+				E00A0CA6243244E2005F56A0 /* Model */,
 				E00A0C91243244C6005F56A0 /* AppDelegate.swift */,
 				E00A0C93243244C6005F56A0 /* SceneDelegate.swift */,
 				E00A0C9A243244C8005F56A0 /* Assets.xcassets */,
@@ -77,16 +79,6 @@
 				E00A0CAA2432451A005F56A0 /* ThirstySoftRegular.otf */,
 			);
 			path = InstaGrid;
-			sourceTree = "<group>";
-		};
-		E00A0CA5243244DD005F56A0 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				E00A0CA8243244EE005F56A0 /* Controller */,
-				E00A0CA7243244E9005F56A0 /* View */,
-				E00A0CA6243244E2005F56A0 /* Model */,
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		E00A0CA6243244E2005F56A0 /* Model */ = {
