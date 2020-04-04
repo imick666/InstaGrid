@@ -13,9 +13,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var swipeToShareStackView: UIStackView!
     
+    //create gesture instance
     let swipeGesture = UISwipeGestureRecognizer()
     
     //demander explications!!
+    //si j'ai bie compris, cette instance permet de récupéré l'orientation de la premiere vue de l'application... je crois...
     private var windowInterfaceOrientation: UIInterfaceOrientation? {
         return UIApplication.shared.windows.first?.windowScene?.interfaceOrientation
     }
@@ -26,10 +28,10 @@ class ViewController: UIViewController {
         
         setObjectOrientation()
         updateSelectorAnimations()
-        
     }
     
     //demander explications
+    //si j'ai bien compris, cette methéode est appellé à chaque fois que la vue princpile change en règle générale... je crois...
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         super.willTransition(to: newCollection, with: coordinator)
         
@@ -42,7 +44,7 @@ class ViewController: UIViewController {
     //-----------------------------------
     // MARK: - UTILITIES
     //-----------------------------------
-    //set object orientation
+    //set object orientation and assign correct gesture
     private func setObjectOrientation() {
         guard let windowInterfaceOrientation = self.windowInterfaceOrientation else { return }
         
@@ -57,6 +59,7 @@ class ViewController: UIViewController {
         self.resultView.addGestureRecognizer(self.swipeGesture)
     }
     
+    //update selector's animation when device's orientation change
     private func updateSelectorAnimations() {
         for selector in layoutSelectorList where selector.isSelect {
             selector.isSelect = true
@@ -88,6 +91,8 @@ class ViewController: UIViewController {
         return resultImage
     }
     
+    //show ActivityViewController for share image
+    //clure is used for adapt the correct animation 
     private func shareResultImage(completion: @escaping () -> Void) { //explication @escaping || @noescape
         let image = resultImgeRenderer()
         ShareHandler.shared.showAC(self, object: image) {

@@ -27,18 +27,20 @@ class LayoutSelector: UIButton {
         -Imagethree
         -ImageFour
     */
+    //assigned each instance of SingleImageViewButton to each instance of LayoutSelector
     @IBOutlet var imageList: [SingleImageViewButton]!
-
     
+    //use methose of this class in other class esealy
     static let shared = LayoutSelector()
-    
+    //store the current orientation for adapt the animations
     static var orientation: InterfaceAdaptation?
-    
+
     var isSelect: Bool = false {
         didSet {
             setState()
         }
     }
+    
     
     private func setState() {
         switch isSelect {

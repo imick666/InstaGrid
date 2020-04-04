@@ -11,7 +11,7 @@ import UIKit
 class SingleImageViewButton: UIButton {
     
     func resetImage() {
-        self.setImage(#imageLiteral(resourceName: "Combined Shape"), for: .normal)
+        self.setImage(#imageLiteral(resourceName: "PlusButton"), for: .normal)
     }
     
     func showLayoutGrid() {
