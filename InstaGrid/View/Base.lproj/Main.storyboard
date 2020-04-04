@@ -60,7 +60,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Tnl-KW-uiY">
                                                 <rect key="frame" x="0.0" y="0.0" width="270" height="127.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="TopLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBD-Kp-kZ8" customClass="SingleImageViewButton" customModule="InstaGrid" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="TopLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBD-Kp-kZ8" userLabel="ImageOne" customClass="SingleImageViewButton" customModule="InstaGrid" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="270" height="127.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="Combined Shape"/>
@@ -68,7 +68,7 @@
                                                             <action selector="selectImagePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BsL-v2-fWQ"/>
                                                         </connections>
                                                     </button>
-                                                    <button hidden="YES" opaque="NO" contentMode="TopLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9PM-P3-dFw" customClass="SingleImageViewButton" customModule="InstaGrid" customModuleProvider="target">
+                                                    <button hidden="YES" opaque="NO" contentMode="TopLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9PM-P3-dFw" userLabel="ImageTwo" customClass="SingleImageViewButton" customModule="InstaGrid" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="127.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="Combined Shape"/>
@@ -81,7 +81,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="dNa-KC-fRs">
                                                 <rect key="frame" x="0.0" y="142.5" width="270" height="127.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="TopLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEC-lC-Jwz" customClass="SingleImageViewButton" customModule="InstaGrid" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="TopLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEC-lC-Jwz" userLabel="ImageThree" customClass="SingleImageViewButton" customModule="InstaGrid" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="127.5" height="127.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="Combined Shape"/>
@@ -89,7 +89,7 @@
                                                             <action selector="selectImagePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pVH-1A-jvw"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="TopLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oup-Rk-TSN" customClass="SingleImageViewButton" customModule="InstaGrid" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="TopLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oup-Rk-TSN" userLabel="ImageFour" customClass="SingleImageViewButton" customModule="InstaGrid" customModuleProvider="target">
                                                         <rect key="frame" x="142.5" y="0.0" width="127.5" height="127.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="Combined Shape"/>
@@ -149,6 +149,9 @@
                                         </variation>
                                         <connections>
                                             <action selector="LayoutOnePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mQT-U0-5AE"/>
+                                            <outletCollection property="imageList" destination="MBD-Kp-kZ8" collectionClass="NSMutableArray" id="zhc-fe-23x"/>
+                                            <outletCollection property="imageList" destination="PEC-lC-Jwz" collectionClass="NSMutableArray" id="rHm-eM-3Ab"/>
+                                            <outletCollection property="imageList" destination="oup-Rk-TSN" collectionClass="NSMutableArray" id="A0b-Vb-ulO"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Xa-mx-R4b" userLabel="LayoutTow" customClass="LayoutSelector" customModule="InstaGrid" customModuleProvider="target">
@@ -156,6 +159,9 @@
                                         <state key="normal" backgroundImage="Layout 2"/>
                                         <connections>
                                             <action selector="layoutTowPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I6c-nW-GSD"/>
+                                            <outletCollection property="imageList" destination="MBD-Kp-kZ8" collectionClass="NSMutableArray" id="bLX-83-tp5"/>
+                                            <outletCollection property="imageList" destination="9PM-P3-dFw" collectionClass="NSMutableArray" id="Wrf-MO-Pwv"/>
+                                            <outletCollection property="imageList" destination="PEC-lC-Jwz" collectionClass="NSMutableArray" id="T9V-pb-zjf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dux-Y4-peg" userLabel="LayoutThree" customClass="LayoutSelector" customModule="InstaGrid" customModuleProvider="target">
@@ -163,6 +169,10 @@
                                         <state key="normal" backgroundImage="Layout 3"/>
                                         <connections>
                                             <action selector="layoutThreePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W48-2u-8YH"/>
+                                            <outletCollection property="imageList" destination="MBD-Kp-kZ8" collectionClass="NSMutableArray" id="TUk-FX-RXl"/>
+                                            <outletCollection property="imageList" destination="9PM-P3-dFw" collectionClass="NSMutableArray" id="w8v-oh-Cbg"/>
+                                            <outletCollection property="imageList" destination="PEC-lC-Jwz" collectionClass="NSMutableArray" id="3t9-Er-K0U"/>
+                                            <outletCollection property="imageList" destination="oup-Rk-TSN" collectionClass="NSMutableArray" id="JEb-DE-gNP"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -211,14 +221,14 @@
                             <mask key="constraints">
                                 <exclude reference="98e-S2-F4W"/>
                                 <exclude reference="hGp-fg-LJq"/>
+                                <exclude reference="dlF-7t-gdS"/>
+                                <exclude reference="hqy-d4-aBO"/>
                                 <exclude reference="F5a-aa-RXn"/>
                                 <exclude reference="kNY-fX-WmO"/>
                                 <exclude reference="uDw-nq-wi6"/>
                                 <exclude reference="JfU-jb-maA"/>
                                 <exclude reference="mH0-YX-obQ"/>
                                 <exclude reference="re9-Av-6px"/>
-                                <exclude reference="dlF-7t-gdS"/>
-                                <exclude reference="hqy-d4-aBO"/>
                                 <exclude reference="g2s-hj-hOt"/>
                             </mask>
                         </variation>
@@ -227,6 +237,8 @@
                                 <include reference="98e-S2-F4W"/>
                                 <exclude reference="T1z-sx-Ehi"/>
                                 <include reference="hGp-fg-LJq"/>
+                                <exclude reference="EmN-G6-Ma4"/>
+                                <include reference="hqy-d4-aBO"/>
                                 <include reference="F5a-aa-RXn"/>
                                 <exclude reference="kNY-fX-WmO"/>
                                 <exclude reference="sBt-9a-ix8"/>
@@ -237,18 +249,12 @@
                                 <include reference="mH0-YX-obQ"/>
                                 <include reference="re9-Av-6px"/>
                                 <exclude reference="ujt-ev-XxD"/>
-                                <exclude reference="EmN-G6-Ma4"/>
-                                <include reference="hqy-d4-aBO"/>
                                 <include reference="g2s-hj-hOt"/>
                                 <exclude reference="wOW-Qn-c6f"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="imageFour" destination="oup-Rk-TSN" id="Asd-DJ-QK9"/>
-                        <outlet property="imageOne" destination="MBD-Kp-kZ8" id="wFD-hz-4wE"/>
-                        <outlet property="imageThree" destination="PEC-lC-Jwz" id="x0e-9A-Tg5"/>
-                        <outlet property="imageTwo" destination="9PM-P3-dFw" id="SAO-ky-aLx"/>
                         <outlet property="resultView" destination="Pcv-z5-gxb" id="QH6-Fg-ah3"/>
                         <outlet property="swipeToShareStackView" destination="yMw-pZ-dDd" id="9JQ-bW-Rfd"/>
                         <outletCollection property="layoutSelectorList" destination="mdM-0M-nWu" collectionClass="NSMutableArray" id="Iz7-tQ-gm4"/>

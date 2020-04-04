@@ -13,6 +13,22 @@ enum InterfaceAdaptation {
 }
 
 class LayoutSelector: UIButton {
+    /*LayoutOne :
+        -ImageOne
+        -ImageThree
+        -ImageFour
+     LayoutTwo :
+        -ImageOne
+        -ImageTwo
+        -ImageFour
+     LayoutThree :
+        -ImageOne
+        -ImageTwo
+        -Imagethree
+        -ImageFour
+    */
+    @IBOutlet var imageList: [SingleImageViewButton]!
+
     
     static let shared = LayoutSelector()
     
@@ -24,18 +40,43 @@ class LayoutSelector: UIButton {
         }
     }
     
-    func setState() {
+    private func setState() {
         switch isSelect {
         case true:
             self.setImage(#imageLiteral(resourceName: "Selected"), for: .normal)
+            showImageGrid()
             setAnimationOrientation()
         case false:
+            hideImageGrid()
+            resetImageGrid()
             self.setImage(nil, for: .normal)
             self.transform = .identity
         
         }
     }
+    //-----------------------------------
+    // MARK: - IMAGE GESTION
+    //-----------------------------------
+    private func showImageGrid() {
+        for image in imageList {
+            image.showLayoutGrid()
+        }
+    }
     
+    private func hideImageGrid() {
+        for image in imageList {
+            image.hideLayoutGrid()
+        }
+    }
+    
+    private func resetImageGrid() {
+        for image in imageList {
+            image.resetImage()
+        }
+    }
+    //-----------------------------------
+    // MARK: - ANIMATION
+    //-----------------------------------
     private func setAnimationOrientation() {
         guard let orientation = LayoutSelector.orientation else { return }
         switch orientation {

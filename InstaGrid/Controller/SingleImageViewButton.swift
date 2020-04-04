@@ -13,4 +13,12 @@ class SingleImageViewButton: UIButton {
     func resetImage() {
         self.setImage(#imageLiteral(resourceName: "Combined Shape"), for: .normal)
     }
+    
+    func showLayoutGrid() {
+        self.isHidden = false
+    }
+    
+    func hideLayoutGrid() {
+        self.isHidden = true
+    }
 }

@@ -10,10 +10,6 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet var layoutSelectorList: [LayoutSelector]!
-    @IBOutlet var imageOne: SingleImageViewButton!
-    @IBOutlet var imageTwo: SingleImageViewButton!
-    @IBOutlet var imageThree: SingleImageViewButton!
-    @IBOutlet var imageFour: SingleImageViewButton!
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var swipeToShareStackView: UIStackView!
     
@@ -32,8 +28,7 @@ class ViewController: UIViewController {
         updateSelectorAnimations()
         
     }
-
-    //use willTransition()??
+    
     //demander explications
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         super.willTransition(to: newCollection, with: coordinator)
@@ -88,12 +83,12 @@ class ViewController: UIViewController {
     private func resultImgeRenderer() -> UIImage{
         let renderer = UIGraphicsImageRenderer(size: resultView.bounds.size)
         let resultImage = renderer.image { (context) in //context?? kesako??
-            resultView.drawHierarchy(in: resultView.bounds, afterScreenUpdates: true)
+            resultView.drawHierarchy(in: resultView.bounds, afterScreenUpdates: false)
         }
         return resultImage
     }
     
-    private func shareResultImage(completion: @escaping () -> Void) {
+    private func shareResultImage(completion: @escaping () -> Void) { //explication @escaping || @noescape
         let image = resultImgeRenderer()
         ShareHandler.shared.showAC(self, object: image) {
             completion()
@@ -105,10 +100,10 @@ class ViewController: UIViewController {
     //animation before share
     private func animationOutUp() {
         let screenSize = UIScreen.main.bounds
+        let scaleReduction = CGAffineTransform(scaleX: 0.49, y: 0.49)
+        let translate = CGAffineTransform(translationX: 0, y: -screenSize.height / 2.13)
+        let totalTransform = translate.concatenating(scaleReduction)
         UIView.animate(withDuration: 0.5) {
-            let scaleReduction = CGAffineTransform(scaleX: 0.49, y: 0.49)
-            let translate = CGAffineTransform(translationX: 0, y: -screenSize.height / 2.13)
-            let totalTransform = translate.concatenating(scaleReduction)
             self.resultView.transform = totalTransform
             self.swipeToShareStackView.alpha = 0
         }
@@ -128,7 +123,7 @@ class ViewController: UIViewController {
     private func animationInUp() {
         UIView.animate(withDuration: 0.5, animations: {
             self.resultView.transform = .identity
-        }) { (true) in
+        }) { (complete) in
             UIView.animate(withDuration: 0.3) {
                 self.swipeToShareStackView.alpha = 1
             }
@@ -140,7 +135,7 @@ class ViewController: UIViewController {
         resultView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
         UIView.animate(withDuration: 0.5, animations: {
             self.resultView.transform = .identity
-        }) { (true) in
+        }) { (complete) in
             UIView.animate(withDuration: 0.3) {
                 self.swipeToShareStackView.alpha = 1
             }
@@ -149,16 +144,11 @@ class ViewController: UIViewController {
     //-----------------------------------
     // MARK: - ACTIONS
     //-----------------------------------
-    
     //Setup layout implentation
-    func setLayoutSelected() {
+    private func setLayoutSelected() {
         for layout in layoutSelectorList {
             layout.isSelect = false
         }
-        imageOne.resetImage()
-        imageTwo.resetImage()
-        imageThree.resetImage()
-        imageFour.resetImage()
     }
     //pick image in imageView
     @IBAction func selectImagePressed(_ sender: SingleImageViewButton) {
@@ -172,28 +162,16 @@ class ViewController: UIViewController {
     @IBAction func LayoutOnePressed(_ sender: LayoutSelector) {
         setLayoutSelected()
         sender.isSelect = true
-        imageOne.isHidden = false
-        imageTwo.isHidden = true
-        imageThree.isHidden = false
-        imageFour.isHidden = false
     }
     
     @IBAction func layoutTowPressed(_ sender: LayoutSelector) {
         setLayoutSelected()
         sender.isSelect = true
-        imageOne.isHidden = false
-        imageTwo.isHidden = false
-        imageThree.isHidden = false
-        imageFour.isHidden = true
     }
     
     @IBAction func layoutThreePressed(_ sender: LayoutSelector) {
         setLayoutSelected()
         sender.isSelect = true
-        imageOne.isHidden = false
-        imageTwo.isHidden = false
-        imageThree.isHidden = false
-        imageFour.isHidden = false
     }
 }
 

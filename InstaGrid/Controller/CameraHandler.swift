@@ -11,6 +11,7 @@ import UIKit
 class CameraHandler:UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //pick image
     static let shared = CameraHandler()
+    
     fileprivate var currentVC: UIViewController!
     var imagePickedBlock: ((UIImage) -> Void)?
     

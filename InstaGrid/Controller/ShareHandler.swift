@@ -13,13 +13,13 @@ class ShareHandler {
     fileprivate var currentVC: UIViewController!
     static let shared = ShareHandler()
     
-    func showAC(_ viewController: UIViewController, object: Any, completion: @escaping () -> Void) {
-        currentVC = viewController
+    func showAC(_ currentViewController: UIViewController, object: Any, completion: @escaping () -> Void) {
+        currentVC = currentViewController
         
         let activityViewController = UIActivityViewController(activityItems: [object], applicationActivities: [])
-        viewController.present(activityViewController, animated: true, completion: nil)
+        currentViewController.present(activityViewController, animated: true, completion: nil)
         
-        activityViewController.completionWithItemsHandler = { (activityType, completed, returnedUtiems, error) in
+        activityViewController.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in // qu'est ce que c'est que tout ces paramtre?!
             completion()
         }
     }
