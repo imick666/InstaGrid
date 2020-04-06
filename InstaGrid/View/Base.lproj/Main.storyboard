@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -20,11 +19,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="InstaGrid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OdF-Sd-l55">
-                                <rect key="frame" x="132" y="64" width="150" height="40"/>
+                                <rect key="frame" x="225" y="20" width="150" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="750" constant="40" id="5OS-qK-2go"/>
                                     <constraint firstAttribute="width" constant="150" id="wk8-Kk-hIt"/>
@@ -34,24 +33,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yMw-pZ-dDd" userLabel="SwipeToShare">
-                                <rect key="frame" x="121.5" y="240" width="171" height="50"/>
+                                <rect key="frame" x="192" y="90.5" width="216" height="51.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Arrow Up" translatesAutoresizingMaskIntoConstraints="NO" id="viS-H4-7L5">
-                                        <rect key="frame" x="0.0" y="0.0" width="171" height="13"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="216" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="13" id="yDp-zZ-4Tk"/>
                                         </constraints>
                                         <variation key="heightClass=compact" image="Arrow Left"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbJ-ZY-Qfr">
-                                        <rect key="frame" x="0.0" y="21" width="171" height="29"/>
+                                        <rect key="frame" x="0.0" y="21" width="216" height="30.5"/>
                                         <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="26"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=compact" hidden="YES"/>
                                     </label>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe left to share" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G22-AX-JtN">
-                                        <rect key="frame" x="0.0" y="50" width="171" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="51.5" width="216" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="26"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -60,7 +59,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pcv-z5-gxb" userLabel="ResultView">
-                                <rect key="frame" x="57" y="298" width="300" height="300"/>
+                                <rect key="frame" x="150" y="150" width="300" height="300"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7N9-zC-Z7t">
                                         <rect key="frame" x="15" y="15" width="270" height="270"/>
@@ -136,7 +135,7 @@
                                 </variation>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="1n1-Ii-cV8" userLabel="LayoutSelector">
-                                <rect key="frame" x="62" y="762" width="290" height="80"/>
+                                <rect key="frame" x="155" y="500" width="290" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdM-0M-nWu" userLabel="LayoutOne" customClass="LayoutSelector" customModule="InstaGrid" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -147,9 +146,9 @@
                                         <state key="normal" backgroundImage="Layout 1"/>
                                         <connections>
                                             <action selector="LayoutOnePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mQT-U0-5AE"/>
-                                            <outletCollection property="imageList" destination="MBD-Kp-kZ8" collectionClass="NSMutableArray" id="zhc-fe-23x"/>
-                                            <outletCollection property="imageList" destination="PEC-lC-Jwz" collectionClass="NSMutableArray" id="rHm-eM-3Ab"/>
-                                            <outletCollection property="imageList" destination="oup-Rk-TSN" collectionClass="NSMutableArray" id="A0b-Vb-ulO"/>
+                                            <outletCollection property="imageButtonList" destination="MBD-Kp-kZ8" collectionClass="NSMutableArray" id="zhc-fe-23x"/>
+                                            <outletCollection property="imageButtonList" destination="PEC-lC-Jwz" collectionClass="NSMutableArray" id="rHm-eM-3Ab"/>
+                                            <outletCollection property="imageButtonList" destination="oup-Rk-TSN" collectionClass="NSMutableArray" id="A0b-Vb-ulO"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Xa-mx-R4b" userLabel="LayoutTow" customClass="LayoutSelector" customModule="InstaGrid" customModuleProvider="target">
@@ -157,9 +156,9 @@
                                         <state key="normal" backgroundImage="Layout 2"/>
                                         <connections>
                                             <action selector="layoutTowPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="I6c-nW-GSD"/>
-                                            <outletCollection property="imageList" destination="MBD-Kp-kZ8" collectionClass="NSMutableArray" id="bLX-83-tp5"/>
-                                            <outletCollection property="imageList" destination="9PM-P3-dFw" collectionClass="NSMutableArray" id="Wrf-MO-Pwv"/>
-                                            <outletCollection property="imageList" destination="PEC-lC-Jwz" collectionClass="NSMutableArray" id="T9V-pb-zjf"/>
+                                            <outletCollection property="imageButtonList" destination="MBD-Kp-kZ8" collectionClass="NSMutableArray" id="bLX-83-tp5"/>
+                                            <outletCollection property="imageButtonList" destination="9PM-P3-dFw" collectionClass="NSMutableArray" id="Wrf-MO-Pwv"/>
+                                            <outletCollection property="imageButtonList" destination="PEC-lC-Jwz" collectionClass="NSMutableArray" id="T9V-pb-zjf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dux-Y4-peg" userLabel="LayoutThree" customClass="LayoutSelector" customModule="InstaGrid" customModuleProvider="target">
@@ -167,10 +166,10 @@
                                         <state key="normal" backgroundImage="Layout 3"/>
                                         <connections>
                                             <action selector="layoutThreePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W48-2u-8YH"/>
-                                            <outletCollection property="imageList" destination="MBD-Kp-kZ8" collectionClass="NSMutableArray" id="TUk-FX-RXl"/>
-                                            <outletCollection property="imageList" destination="9PM-P3-dFw" collectionClass="NSMutableArray" id="w8v-oh-Cbg"/>
-                                            <outletCollection property="imageList" destination="PEC-lC-Jwz" collectionClass="NSMutableArray" id="3t9-Er-K0U"/>
-                                            <outletCollection property="imageList" destination="oup-Rk-TSN" collectionClass="NSMutableArray" id="JEb-DE-gNP"/>
+                                            <outletCollection property="imageButtonList" destination="MBD-Kp-kZ8" collectionClass="NSMutableArray" id="TUk-FX-RXl"/>
+                                            <outletCollection property="imageButtonList" destination="9PM-P3-dFw" collectionClass="NSMutableArray" id="w8v-oh-Cbg"/>
+                                            <outletCollection property="imageButtonList" destination="PEC-lC-Jwz" collectionClass="NSMutableArray" id="3t9-Er-K0U"/>
+                                            <outletCollection property="imageButtonList" destination="oup-Rk-TSN" collectionClass="NSMutableArray" id="JEb-DE-gNP"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -212,14 +211,14 @@
                             <mask key="constraints">
                                 <exclude reference="98e-S2-F4W"/>
                                 <exclude reference="hGp-fg-LJq"/>
+                                <exclude reference="dlF-7t-gdS"/>
+                                <exclude reference="hqy-d4-aBO"/>
                                 <exclude reference="F5a-aa-RXn"/>
                                 <exclude reference="kNY-fX-WmO"/>
                                 <exclude reference="uDw-nq-wi6"/>
                                 <exclude reference="JfU-jb-maA"/>
                                 <exclude reference="mH0-YX-obQ"/>
                                 <exclude reference="re9-Av-6px"/>
-                                <exclude reference="dlF-7t-gdS"/>
-                                <exclude reference="hqy-d4-aBO"/>
                                 <exclude reference="g2s-hj-hOt"/>
                             </mask>
                         </variation>
@@ -228,6 +227,8 @@
                                 <include reference="98e-S2-F4W"/>
                                 <exclude reference="T1z-sx-Ehi"/>
                                 <include reference="hGp-fg-LJq"/>
+                                <exclude reference="EmN-G6-Ma4"/>
+                                <include reference="hqy-d4-aBO"/>
                                 <include reference="F5a-aa-RXn"/>
                                 <exclude reference="kNY-fX-WmO"/>
                                 <exclude reference="sBt-9a-ix8"/>
@@ -238,8 +239,6 @@
                                 <include reference="mH0-YX-obQ"/>
                                 <include reference="re9-Av-6px"/>
                                 <exclude reference="ujt-ev-XxD"/>
-                                <exclude reference="EmN-G6-Ma4"/>
-                                <include reference="hqy-d4-aBO"/>
                                 <include reference="g2s-hj-hOt"/>
                                 <exclude reference="wOW-Qn-c6f"/>
                             </mask>

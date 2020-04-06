@@ -28,10 +28,8 @@ class LayoutSelector: UIButton {
         -ImageFour
     */
     //assigned each instance of SingleImageViewButton to each instance of LayoutSelector
-    @IBOutlet var imageList: [SingleImageViewButton]!
-    
-    //use methose of this class in other class esealy
-    static let shared = LayoutSelector()
+    @IBOutlet var imageButtonList: [SingleImageViewButton]!
+
     //store the current orientation for adapt the animations
     static var orientation: InterfaceAdaptation?
 
@@ -60,19 +58,19 @@ class LayoutSelector: UIButton {
     // MARK: - IMAGE GESTION
     //-----------------------------------
     private func showImageGrid() {
-        for image in imageList {
+        for image in imageButtonList {
             image.showLayoutGrid()
         }
     }
     
     private func hideImageGrid() {
-        for image in imageList {
+        for image in imageButtonList {
             image.hideLayoutGrid()
         }
     }
     
     private func resetImageGrid() {
-        for image in imageList {
+        for image in imageButtonList {
             image.resetImage()
         }
     }
