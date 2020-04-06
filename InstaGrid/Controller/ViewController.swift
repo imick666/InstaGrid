@@ -19,7 +19,11 @@ class ViewController: UIViewController {
     //demander explications!!
     //si j'ai bie compris, cette instance permet de récupéré l'orientation de la premiere vue de l'application... je crois...
     private var windowInterfaceOrientation: UIInterfaceOrientation? {
-        return UIApplication.shared.windows.first?.windowScene?.interfaceOrientation
+        if #available(iOS 13.0, *) {
+            return UIApplication.shared.windows.first?.windowScene?.interfaceOrientation
+        } else {
+            return UIApplication.shared.statusBarOrientation
+        }
     }
     
     override func viewDidLoad() {
