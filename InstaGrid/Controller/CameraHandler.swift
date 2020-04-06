@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CameraHandler:UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CameraHandler: NSObject{
     //pick image
     static let shared = CameraHandler()
     
@@ -20,9 +20,11 @@ class CameraHandler:UIViewController, UIImagePickerControllerDelegate, UINavigat
         
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (alert: UIAlertAction!) in
-            self.camera()
-        }))
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (alert: UIAlertAction!) in
+                self.camera()
+            }))
+        }
         
         actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (alert: UIAlertAction) in
             self.photoLibrary()
@@ -60,9 +62,9 @@ class CameraHandler:UIViewController, UIImagePickerControllerDelegate, UINavigat
             currentVC.present(alert, animated: true, completion: nil)
         }
     }
-    
-    
-    
+}
+
+extension CameraHandler: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         currentVC.dismiss(animated: true, completion: nil)
     }

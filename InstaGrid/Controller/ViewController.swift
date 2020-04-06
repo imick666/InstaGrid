@@ -83,7 +83,7 @@ class ViewController: UIViewController {
     // MARK: - IMAGE RENDERER || SHARE
     //-----------------------------------
     //render result Image
-    private func resultImgeRenderer() -> UIImage{
+    private func resultImageRenderer() -> UIImage{
         let renderer = UIGraphicsImageRenderer(size: resultView.bounds.size)
         let resultImage = renderer.image { (context) in //context?? kesako??
             resultView.drawHierarchy(in: resultView.bounds, afterScreenUpdates: false)
@@ -94,7 +94,7 @@ class ViewController: UIViewController {
     //show ActivityViewController for share image
     //clure is used for adapt the correct animation 
     private func shareResultImage(completion: @escaping () -> Void) { //explication @escaping || @noescape
-        let image = resultImgeRenderer()
+        let image = resultImageRenderer()
         ShareHandler.shared.showAC(self, object: image) {
             completion()
         }
