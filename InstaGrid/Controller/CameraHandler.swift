@@ -8,33 +8,33 @@
 
 import UIKit
 
-class CameraHandler: NSObject{
+class CameraHandler: NSObject {
     //pick image
     static let shared = CameraHandler()
-    
+
     fileprivate var currentVC: UIViewController!
     var imagePickedBlock: ((UIImage) -> Void)?
-    
+
     func showActionSheet(_ currentViewController: UIViewController) {
         currentVC = currentViewController
-        
+
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        if UIImagePickerController.isSourceTypeAvailable(.camera){
-            actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (alert: UIAlertAction!) in
+
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (_: UIAlertAction!) in
                 self.camera()
             }))
         }
-        
-        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (alert: UIAlertAction) in
+
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (_: UIAlertAction) in
             self.photoLibrary()
         }))
-        
+
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
+
         currentViewController.present(actionSheet, animated: true, completion: nil)
     }
-    
+
     private func camera() {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let ipc = UIImagePickerController()
@@ -48,7 +48,7 @@ class CameraHandler: NSObject{
             currentVC.present(alert, animated: true, completion: nil)
         }
     }
-    
+
     private func photoLibrary() {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             let ipc = UIImagePickerController()
@@ -68,8 +68,8 @@ extension CameraHandler: UIImagePickerControllerDelegate, UINavigationController
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         currentVC.dismiss(animated: true, completion: nil)
     }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let image = info[.editedImage] as? UIImage {
             self.imagePickedBlock?(image)
         } else {

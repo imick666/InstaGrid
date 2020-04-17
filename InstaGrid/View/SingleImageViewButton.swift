@@ -9,15 +9,15 @@
 import UIKit
 
 class SingleImageViewButton: UIButton {
-    
+
     func resetImage() {
         self.setImage(#imageLiteral(resourceName: "PlusButton"), for: .normal)
     }
-    
+
     func showLayoutGrid() {
         self.isHidden = false
     }
-    
+
     func hideLayoutGrid() {
         self.isHidden = true
     }

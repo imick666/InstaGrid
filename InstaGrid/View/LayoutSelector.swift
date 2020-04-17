@@ -38,8 +38,7 @@ class LayoutSelector: UIButton {
             setState()
         }
     }
-    
-    
+
     private func setState() {
         switch isSelect {
         case true:
@@ -51,7 +50,6 @@ class LayoutSelector: UIButton {
             resetImageGrid()
             self.setImage(nil, for: .normal)
             self.transform = .identity
-        
         }
     }
     //-----------------------------------
@@ -62,13 +60,13 @@ class LayoutSelector: UIButton {
             image.showLayoutGrid()
         }
     }
-    
+
     private func hideImageGrid() {
         for image in imageButtonList {
             image.hideLayoutGrid()
         }
     }
-    
+
     private func resetImageGrid() {
         for image in imageButtonList {
             image.resetImage()
@@ -86,13 +84,13 @@ class LayoutSelector: UIButton {
             setAnimationLandscape()
         }
     }
-    
+
     private func setAnimationPortrait() {
         let scale = CGAffineTransform(scaleX: 1.1, y: 1.1)
         let transformTotal = CGAffineTransform(translationX: 0, y: -15).concatenating(scale)
         self.transform = transformTotal
     }
-    
+
     private func setAnimationLandscape() {
         let scale = CGAffineTransform(scaleX: 1.1, y: 1.1)
         let transformTotal = CGAffineTransform(translationX: -15, y: 0).concatenating(scale)
