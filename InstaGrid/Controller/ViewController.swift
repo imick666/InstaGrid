@@ -5,7 +5,7 @@
 //  Created by mickael ruzel on 30/03/2020.
 //  Copyright © 2020 mickael ruzel. All rights reserved.
 //
-
+//swiftlint:disable line_length
 import UIKit
 class ViewController: UIViewController {
 
@@ -16,8 +16,7 @@ class ViewController: UIViewController {
     //create gesture instance
     let swipeGesture = UISwipeGestureRecognizer()
 
-    //demander explications!!
-    //si j'ai bie compris, cette instance permet de récupéré l'orientation de la premiere vue de l'application... je crois...
+    //Get interface orientation for iOS 11 and later
     private var windowInterfaceOrientation: UIInterfaceOrientation? {
         if #available(iOS 13.0, *) {
             return UIApplication.shared.windows.first?.windowScene?.interfaceOrientation
@@ -34,8 +33,7 @@ class ViewController: UIViewController {
         updateSelectorAnimations()
     }
 
-    //demander explications
-    //si j'ai bien compris, cette methéode est appellé à chaque fois que la vue princpile change en règle générale... je crois...
+    //update animation with orientation change.
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         super.willTransition(to: newCollection, with: coordinator)
 
@@ -96,8 +94,8 @@ class ViewController: UIViewController {
     }
 
     //show ActivityViewController for share image
-    //clure is used for adapt the correct animation 
-    private func shareResultImage(completion: @escaping () -> Void) { //explication @escaping || @noescape
+    //closure is used for adapt the correct animation
+    private func shareResultImage(completion: @escaping () -> Void) {
         let image = resultImageRenderer()
         ShareHandler.shared.showAC(self, object: image) {
             completion()
@@ -128,6 +126,7 @@ class ViewController: UIViewController {
             self.swipeToShareStackView.alpha = 0
         }
     }
+
     //animtation after share
     private func animationInUp() {
         UIView.animate(withDuration: 0.5, animations: {

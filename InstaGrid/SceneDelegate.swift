@@ -5,7 +5,7 @@
 //  Created by mickael ruzel on 30/03/2020.
 //  Copyright © 2020 mickael ruzel. All rights reserved.
 //
-
+//swiftlint:disable line_length
 import UIKit
 
 @available(iOS 13.0, *)

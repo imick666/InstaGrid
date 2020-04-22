@@ -5,7 +5,7 @@
 //  Created by mickael ruzel on 31/03/2020.
 //  Copyright © 2020 mickael ruzel. All rights reserved.
 //
-
+//swiftlint:disable line_length
 import UIKit
 
 class CameraHandler: NSObject {
