@@ -19,6 +19,7 @@
 		E0DCACEC243B81A300BDE525 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00A0C95243244C6005F56A0 /* ViewController.swift */; };
 		E0DCACED243B81A300BDE525 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E042B89924332A0B00EDCDE5 /* CameraHandler.swift */; };
 		E0DCACEE243B81A300BDE525 /* ShareHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C83A19243733D200FAA314 /* ShareHandler.swift */; };
+		E0E94C352785D456000573DD /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E0E94C342785D456000573DD /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		E00A0CB224325E4F005F56A0 /* SingleImageViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewButton.swift; sourceTree = "<group>"; };
 		E042B89924332A0B00EDCDE5 /* CameraHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
 		E0C83A19243733D200FAA314 /* ShareHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareHandler.swift; sourceTree = "<group>"; };
+		E0E94C342785D456000573DD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 		E00A0C85243244C6005F56A0 = {
 			isa = PBXGroup;
 			children = (
+				E0E94C342785D456000573DD /* README.md */,
 				E00A0C90243244C6005F56A0 /* InstaGrid */,
 				E00A0C8F243244C6005F56A0 /* Products */,
 			);
@@ -168,6 +171,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0E94C352785D456000573DD /* README.md in Resources */,
 				E00A0C9B243244C8005F56A0 /* Assets.xcassets in Resources */,
 				E00A0CAC2432451A005F56A0 /* ThirstySoftRegular.otf in Resources */,
 				E00A0CAB2432451A005F56A0 /* Delm-Medium.otf in Resources */,
@@ -193,8 +197,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 
