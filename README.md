@@ -28,7 +28,7 @@ Instagrid is a photo montage app where the user can insert an image in a predifi
 - the cameras (front or back)
 
 Then, the user can :
-- share the montage trhough message, email, etc
+- share the montage through message, email, etc
 - post it on his favorite socail network
 - save it in his library
 
@@ -47,8 +47,10 @@ Then, the user can :
 
 ## Screenshots
 
-<img src="./assets/screenshots/screenshot1.png" width="275">
-<img src="./assets/screenshots/screenshot2.png" width="275">
-<img src="./assets/screenshots/screenshot5.png" width="275">
-<img src="./assets/screenshots/screenshot3.png" height="275">
-<img src="./assets/screenshots/screenshot4.png" height="275">
+<div float="left">
+    <img src="./assets/screenshots/screenshot1.png" width="275" />
+    <img src="./assets/screenshots/screenshot2.png" width="275" />
+    <img src="./assets/screenshots/screenshot5.png" width="275" />
+    <img src="./assets/screenshots/screenshot3.png" height="275" />
+    <img src="./assets/screenshots/screenshot4.png" height="275" />
+</div>
